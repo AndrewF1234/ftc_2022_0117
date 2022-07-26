@@ -95,7 +95,7 @@ public class DrawLineTest extends LinearOpMode {
             previous_x = current_x;
             previous_y = current_y;
 
-            drawCross(30);
+            drawCircle(current_x,current_y,50);
             // 5) draw the joystick values with call to drawPixelfromList
             // and update the image
             imageViewer.setImage(image);
@@ -104,6 +104,20 @@ public class DrawLineTest extends LinearOpMode {
             telemetry.update();
         }
 
+    }
+
+    void drawCircle(int x, int y, int r)
+    {
+        double PI = 3.1415926535;
+        double i, angle, x1, y1;
+
+        for(i = 0; i < 360; i += 0.1)
+        {
+            angle = i;
+            x1 = r * Math.cos(angle * PI / 180);
+            y1 = r * Math.sin(angle * PI / 180);
+            setPixel((int)(x + x1), (int)(y + y1), 255,255,255);
+        }
     }
 
     public void drawCross(int length) {
